@@ -1,2 +1,6 @@
 swagger
 .env
+.venv
+.vscode
+/tests/data
+*.pyc

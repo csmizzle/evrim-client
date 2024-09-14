@@ -14,11 +14,7 @@ run_id = os.getenv("EVRIM_RUN_ID")
 
 
 def test_evrim_from_username_password() -> None:
-    evrim = Evrim(
-        url=url,
-        username=username,
-        password=password
-    )
+    evrim = Evrim(url=url, username=username, password=password)
     assert evrim is not None
     assert evrim.url == url
     assert evrim.username == username
@@ -27,10 +23,7 @@ def test_evrim_from_username_password() -> None:
 
 
 def test_evrim_from_token() -> None:
-    evrim = Evrim.from_token(
-        url=url,
-        token=token
-    )
+    evrim = Evrim.from_token(url=url, token=token)
     assert evrim is not None
     assert evrim.url == url
     assert evrim.session.headers["Authorization"] is not None

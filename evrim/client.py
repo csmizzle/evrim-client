@@ -19,7 +19,7 @@ class Evrim:
             username (str): The username for authentication.
             password (str): The password for authentication.
         """
-        
+
         self.url = url
         self.username = username
         self._password = password
@@ -57,14 +57,14 @@ class Evrim:
             raise ValueError("Username and password must be set to set the token.")
         response = requests.post(
             f"{self.url}/token/",
-            json={"username": self.username, "password": self._password}
+            json={"username": self.username, "password": self._password},
         )
         response.raise_for_status()
         if response.ok:
             # set headers for the session
-            self.session.headers.update({
-                "Authorization": f"Bearer {response.json()['access']}"
-            })
+            self.session.headers.update(
+                {"Authorization": f"Bearer {response.json()['access']}"}
+            )
             # set refresh token
             self.refresh = response.json()["refresh"]
             return True
@@ -80,14 +80,13 @@ class Evrim:
         if self.refresh is None:
             raise ValueError("Refresh token is not set.")
         response = requests.post(
-            f"{self.url}/token/refresh/",
-            json={"refresh": self.refresh}
+            f"{self.url}/token/refresh/", json={"refresh": self.refresh}
         )
         response.raise_for_status()
         if response.ok:
-            self.session.headers.update({
-                "Authorization": f"Bearer {response.json()['access']}"
-            })
+            self.session.headers.update(
+                {"Authorization": f"Bearer {response.json()['access']}"}
+            )
             return True
 
     def validate_token(self, token: str) -> dict:
@@ -99,15 +98,14 @@ class Evrim:
             requests.HTTPError: If the request to the server fails.
         """
         # code implementation here
-        
+
         response = requests.post(
             f"{self.url}/token/verify/",
-            json={"token": token}  # split on Bearer and get the token
+            json={"token": token},  # split on Bearer and get the token
         )
         response.raise_for_status()
         if response.ok:
             return response.json()
-
 
     def generate_pdf(self, report_id: int) -> models.PDFReport:
         """
@@ -119,7 +117,7 @@ class Evrim:
         Raises:
             requests.HTTPError: If there is an error in the HTTP request.
         """
-        
+
         response = self.session.get(
             f"{self.url}/generate/{report_id}/pdf/",
         )
@@ -127,7 +125,9 @@ class Evrim:
         if response.ok:
             return models.PDFReport(
                 content=response.content,
-                filename=response.headers["Content-Disposition"].split("=")[1].strip('"'),
+                filename=response.headers["Content-Disposition"]
+                .split("=")[1]
+                .strip('"'),
             )
 
     def generate_docx(self, report_id: int) -> models.DocxReport:
@@ -147,7 +147,9 @@ class Evrim:
         if response.ok:
             return models.DocxReport(
                 content=response.content,
-                filename=response.headers["Content-Disposition"].split("=")[1].strip('"'),
+                filename=response.headers["Content-Disposition"]
+                .split("=")[1]
+                .strip('"'),
             )
 
     def submit_research(
@@ -196,7 +198,7 @@ class Evrim:
         Raises:
             requests.HTTPError: If the request to the server fails.
         """
-        
+
         response = self.session.get(f"{self.url}/reports/")
         response.raise_for_status()
         if response.ok:
@@ -212,7 +214,7 @@ class Evrim:
         Raises:
             requests.HTTPError: If the request to the server fails.
         """
-        
+
         response = self.session.get(f"{self.url}/reports/{report_id}/")
         response.raise_for_status()
         if response.ok:
@@ -226,7 +228,7 @@ class Evrim:
         Raises:
             requests.HTTPError: If the request to the server fails.
         """
-        
+
         response = self.session.get(f"{self.url}/runs")
         response.raise_for_status()
         if response.ok:
@@ -242,12 +244,11 @@ class Evrim:
         Raises:
             requests.HTTPError: If the request to the server fails.
         """
-        
+
         response = self.session.get(f"{self.url}/runs/{run_id}/")
         response.raise_for_status()
         if response.ok:
             return models.Run(**response.json())
-
 
     def get_tasks(self) -> list[models.Task]:
         """
@@ -257,7 +258,7 @@ class Evrim:
         Raises:
             requests.HTTPError: If the request to the server fails.
         """
-        
+
         response = self.session.get(f"{self.url}/tasks/")
         response.raise_for_status()
         if response.ok:

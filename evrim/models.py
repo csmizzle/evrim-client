@@ -2,8 +2,8 @@ from pydantic import BaseModel
 from typing import List, Optional
 import os
 
+
 class GeneratedReport(BaseModel):
-    
     def save(self, path: str = None, filename: str = None) -> None:
         """
         Save the content of the model to a file.

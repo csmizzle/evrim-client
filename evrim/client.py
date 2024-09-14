@@ -29,19 +29,28 @@ class Evrim:
         self.refresh = None
 
     @classmethod
-    def from_token(cls, url: str, token: str, validate: bool = True) -> "Evrim":
+    def from_token(
+        cls,
+        url: str,
+        access_token: str,
+        validate: bool = True,
+        refresh_token: str = None,
+    ) -> "Evrim":
         """
         Initializes a new instance of the `Client` class from a token.
         Args:
             url (str): The URL of the client.
-            token (str): The token for authentication.
+            access_token (str): The token for authentication.
+            refresh_token (str): The refresh token for authentication.
         Returns:
             Evrim: A new instance of the `Client` class.
         """
         client = cls(url)
         if validate:
-            client.validate_token(token)
-        client.session.headers.update({"Authorization": f"Bearer {token}"})
+            client.validate_token(access_token)
+        client.session.headers.update({"Authorization": f"Bearer {access_token}"})
+        if refresh_token:
+            client.refresh = refresh_token
         return client
 
     def set_token(self) -> bool:

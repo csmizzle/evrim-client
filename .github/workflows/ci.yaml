@@ -2,17 +2,17 @@ name: CI Pipeline
 
 on:
   push:
+    paths-ignore:
+      - '*.md'
+      - 'tests/**'
     branches:
       - main
-    paths-ignore:
-      - 'README.md'
-      - 'tests/**'
   pull_request:
+    paths-ignore:
+      - '*.md'
+      - 'tests/**'
     branches:
       - main
-    paths-ignore:
-      - 'README.md'
-      - 'tests/**'
 
 env:
   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

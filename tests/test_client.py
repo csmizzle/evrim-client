@@ -47,7 +47,6 @@ def test_from_token_without_validation(evrim_client: Evrim) -> None:
     )
 
 
-@vcr.use_cassette(filter_headers=["Authorization", "x-moesif-transaction-id"])
 def test_evrim_from_username_password() -> None:
     evrim = Evrim(url=url, username=username, password=password)
     assert evrim is not None
@@ -57,8 +56,7 @@ def test_evrim_from_username_password() -> None:
     assert evrim.session.headers["Authorization"] is not None
 
 
-@vcr.use_cassette(filter_headers=["Authorization", "x-moesif-transaction-id"])
-def test_evrim_from_expired__token() -> None:
+def test_evrim_from_expired_token() -> None:
     with pytest.raises(requests.HTTPError):
         Evrim.from_token(url=url, access_token=expired_token)
 

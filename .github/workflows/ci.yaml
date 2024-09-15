@@ -8,6 +8,17 @@ on:
     branches:
       - main
 
+env:
+  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+  PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+  EVRIM_URL: https://api.evrim.ai/prod
+  EVRIM_USERNAME: ${{ secrets.EVRIM_USERNAME }}
+  EVRIM_PASSWORD: ${{ secrets.EVRIM_PASSWORD }}
+  EVRIM_TOKEN : ${{ secrets.EVRIM_TOKEN }}
+  ERVRIM_REPORT_ID: 1
+  ERVIM_RUN_ID: 1
+
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -36,7 +47,7 @@ jobs:
       if: success()
       with:
         fail_ci_if_error: true  # Optional, fails the job if Codecov upload fails
-        token: ${{ secrets.CODECOV_TOKEN }}
+        token: ${{ env.CODECOV_TOKEN }}
 
     - name: Build project
       if: success()
@@ -45,5 +56,5 @@ jobs:
     - name: Publish to PyPI
       if: success()
       run: |
-        poetry config pypi-token.pypi ${{ secrets.PYPI_TOKEN }}
+        poetry config pypi-token.pypi ${{ env.PYPI_TOKEN }}
         poetry publish

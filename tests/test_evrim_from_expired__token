@@ -15,13 +15,13 @@ interactions:
       User-Agent:
       - python-requests/2.32.3
     method: POST
-    uri: http://localhost:8000/token/verify/
+    uri: https://api.evrim.ai/prod/token/verify/
   response:
     body:
       string: '{"detail":"Token is invalid or expired","code":"token_not_valid"}'
     headers:
-      Allow:
-      - POST, OPTIONS
+      Connection:
+      - keep-alive
       Content-Length:
       - '65'
       Content-Type:
@@ -29,21 +29,25 @@ interactions:
       Cross-Origin-Opener-Policy:
       - same-origin
       Date:
-      - Sun, 15 Sep 2024 01:17:22 GMT
-      Referrer-Policy:
+      - Sun, 15 Sep 2024 17:26:52 GMT
+      allow:
+      - POST, OPTIONS
+      apigw-requestid:
+      - eKDSkgcJIAMEVvw=
+      referrer-policy:
       - same-origin
-      Server:
-      - WSGIServer/0.2 CPython/3.12.6
-      Vary:
+      server:
+      - gunicorn
+      vary:
       - Accept, origin
-      WWW-Authenticate:
+      www-authenticate:
       - Bearer realm="api"
-      X-Content-Type-Options:
+      x-content-type-options:
       - nosniff
-      X-Frame-Options:
+      x-frame-options:
       - DENY
       x-moesif-transaction-id:
-      - 77b9926b-8ec0-486f-b5b3-2e1fa1805838
+      - 31757e83-4286-45fc-b52c-1cd4a017142d
     status:
       code: 401
       message: Unauthorized

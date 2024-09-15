@@ -11,13 +11,13 @@ interactions:
       User-Agent:
       - python-requests/2.32.3
     method: GET
-    uri: http://localhost:8000/reports/9999/
+    uri: https://api.evrim.ai/prod/reports/9999/
   response:
     body:
       string: '{"detail":"No ReportV2 matches the given query."}'
     headers:
-      Allow:
-      - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+      Connection:
+      - keep-alive
       Content-Length:
       - '49'
       Content-Type:
@@ -25,19 +25,23 @@ interactions:
       Cross-Origin-Opener-Policy:
       - same-origin
       Date:
-      - Sun, 15 Sep 2024 01:17:22 GMT
-      Referrer-Policy:
+      - Sun, 15 Sep 2024 17:26:54 GMT
+      allow:
+      - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+      apigw-requestid:
+      - eKDS4gAKIAMEVpQ=
+      referrer-policy:
       - same-origin
-      Server:
-      - WSGIServer/0.2 CPython/3.12.6
-      Vary:
+      server:
+      - gunicorn
+      vary:
       - Accept, origin
-      X-Content-Type-Options:
+      x-content-type-options:
       - nosniff
-      X-Frame-Options:
+      x-frame-options:
       - DENY
       x-moesif-transaction-id:
-      - 7766004e-16be-4f5b-9e4b-2e30da7e3702
+      - 7babfbc3-10a9-4d87-8b29-014cdb297205
     status:
       code: 404
       message: Not Found

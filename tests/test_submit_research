@@ -1,0 +1,57 @@
+interactions:
+- request:
+    body: '{"url": "https://trssllc.com", "title": "Company Research", "description":
+      "Evrim Insights", "style": "NARRATIVE", "tone": "ANALYTICAL", "point_of_view":
+      "THIRD_PERSON"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '169'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.32.3
+    method: POST
+    uri: https://api.evrim.ai/prod/research/
+  response:
+    body:
+      string: '{"task_id":"8f2fd7a3-0d3a-4370-86d0-d470253c046d","event":{"id":3,"input":"{\"url\":
+        \"https://trssllc.com\", \"title\": \"Company Research\", \"description\":
+        \"Evrim Insights\", \"style\": \"NARRATIVE\", \"tone\": \"ANALYTICAL\", \"point_of_view\":
+        \"THIRD_PERSON\"}"},"created_at":"2024-09-15T17:37:56.286994Z","status":"P","created_by":1}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '342'
+      Content-Type:
+      - application/json
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Date:
+      - Sun, 15 Sep 2024 17:37:56 GMT
+      allow:
+      - POST, OPTIONS
+      apigw-requestid:
+      - eKE6NiLEIAMEPmQ=
+      referrer-policy:
+      - same-origin
+      server:
+      - gunicorn
+      vary:
+      - Accept, origin
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-moesif-transaction-id:
+      - 160ca1c3-8c30-44cf-a56f-525e7fc1c2f6
+    status:
+      code: 201
+      message: Created
+version: 1

@@ -14,6 +14,39 @@ report_id = os.getenv("EVRIM_REPORT_ID")
 run_id = os.getenv("EVRIM_RUN_ID")
 
 
+def test_validate_token(evrim_client: Evrim) -> None:
+    assert evrim_client.validate_token(
+        evrim_client.session.headers["Authorization"].split(" ")[1]
+    ).ok
+
+
+def test_set_token(evrim_client: Evrim) -> None:
+    # set new token
+    evrim_client.set_token()
+    # validate new token
+    assert evrim_client.validate_token(
+        token=evrim_client.session.headers["Authorization"].split(" ")[1]
+    ).ok
+
+
+def test_from_token_with_validation(evrim_client: Evrim) -> None:
+    assert evrim_client.from_token(
+        url=url,
+        access_token=evrim_client.session.headers["Authorization"].split(" ")[1],
+        refresh_token=evrim_client.refresh_token,
+        validate=True,
+    )
+
+
+def test_from_token_without_validation(evrim_client: Evrim) -> None:
+    assert evrim_client.from_token(
+        url=url,
+        access_token=evrim_client.session.headers["Authorization"].split(" ")[1],
+        refresh_token=evrim_client.refresh_token,
+        validate=False,
+    )
+
+
 @vcr.use_cassette(filter_headers=["Authorization", "x-moesif-transaction-id"])
 def test_evrim_from_username_password() -> None:
     evrim = Evrim(url=url, username=username, password=password)
@@ -85,3 +118,10 @@ def test_get_runs(evrim_client: Evrim) -> None:
 def test_get_run_not_found(evrim_client: Evrim) -> None:
     with pytest.raises(requests.HTTPError):
         evrim_client.get_run(9999)
+
+
+@vcr.use_cassette(filter_headers=["Authorization", "x-moesif-transaction-id"])
+def test_submit_research(evrim_client: Evrim) -> None:
+    task = evrim_client.submit_research("https://trssllc.com")
+    assert isinstance(task, models.Task)
+    assert task.status != "F"

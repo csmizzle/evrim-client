@@ -43,7 +43,7 @@ class Task(BaseModel):
 
 class Paragraph(BaseModel):
     id: int
-    title: str
+    title: Optional[str] = None
     sentences: list[str]
     images: Optional[list[dict]] = None
 

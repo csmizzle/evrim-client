@@ -2,6 +2,7 @@
 Client code for the Evrim API
 """
 import requests
+from requests.models import Response
 from requests.sessions import Session
 from evrim import models
 
@@ -46,11 +47,11 @@ class Evrim:
             Evrim: A new instance of the `Client` class.
         """
         client = cls(url)
-        if validate:
-            client.validate_token(access_token)
         client.session.headers.update({"Authorization": f"Bearer {access_token}"})
         if refresh_token:
             client.refresh = refresh_token
+        if validate:
+            client.validate_token(access_token)
         return client
 
     def set_token(self) -> bool:
@@ -98,7 +99,7 @@ class Evrim:
             )
             return True
 
-    def validate_token(self, token: str) -> dict:
+    def validate_token(self, token: str) -> Response:
         """
         Validates the token by sending a POST request to the server.
         Returns:
@@ -114,7 +115,7 @@ class Evrim:
         )
         response.raise_for_status()
         if response.ok:
-            return response.json()
+            return response
 
     def generate_pdf(self, report_id: int) -> models.PDFReport:
         """
@@ -164,11 +165,11 @@ class Evrim:
     def submit_research(
         self,
         url: str,
-        title: str,
-        description: str,
-        style: str,
-        tone: str,
-        point_of_view: str,
+        title: str = "Company Research",
+        description: str = "Evrim Insights",
+        style: str = "NARRATIVE",
+        tone: str = "ANALYTICAL",
+        point_of_view: str = "THIRD_PERSON",
     ) -> models.Task:
         """
         Submits a research request to the server.

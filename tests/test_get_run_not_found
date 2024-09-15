@@ -11,13 +11,13 @@ interactions:
       User-Agent:
       - python-requests/2.32.3
     method: GET
-    uri: http://localhost:8000/runs/9999/
+    uri: https://api.evrim.ai/prod/runs/9999/
   response:
     body:
       string: '{"detail":"No CrewRunV2 matches the given query."}'
     headers:
-      Allow:
-      - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+      Connection:
+      - keep-alive
       Content-Length:
       - '50'
       Content-Type:
@@ -25,19 +25,23 @@ interactions:
       Cross-Origin-Opener-Policy:
       - same-origin
       Date:
-      - Sun, 15 Sep 2024 01:17:24 GMT
-      Referrer-Policy:
+      - Sun, 15 Sep 2024 17:27:01 GMT
+      allow:
+      - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+      apigw-requestid:
+      - eKDT3hUTIAMEbwg=
+      referrer-policy:
       - same-origin
-      Server:
-      - WSGIServer/0.2 CPython/3.12.6
-      Vary:
+      server:
+      - gunicorn
+      vary:
       - Accept, origin
-      X-Content-Type-Options:
+      x-content-type-options:
       - nosniff
-      X-Frame-Options:
+      x-frame-options:
       - DENY
       x-moesif-transaction-id:
-      - 3c077660-af7f-4929-abfd-b72636496c19
+      - 623cb58f-6273-4dda-8523-2f37c93fb673
     status:
       code: 404
       message: Not Found

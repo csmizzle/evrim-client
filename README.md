@@ -111,5 +111,5 @@ This is will do two things:
 - If `response` is provided, this token will also be set so you can leverage operations like `refresh_token`.
 
 
-# Contact
+## Contact
 Please reach out to chris@evrim.ai with any feedback or ideas!

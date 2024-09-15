@@ -1,0 +1,50 @@
+interactions:
+- request:
+    body: '{"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI2MjQ0NjAwLCJpYXQiOjE3MjYyNDQzMDAsImp0aSI6IjVlMjgzMmEzNzNiNTRhMzg5NTRkMTIwNjE4NTMxMGZhIiwidXNlcl9pZCI6MX0.SYMgK8lsrTuu5ursBus6xoC1sIVjKPNxTk5vxzQzPd4"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '241'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.32.3
+    method: POST
+    uri: http://localhost:8000/token/verify/
+  response:
+    body:
+      string: '{"detail":"Token is invalid or expired","code":"token_not_valid"}'
+    headers:
+      Allow:
+      - POST, OPTIONS
+      Content-Length:
+      - '65'
+      Content-Type:
+      - application/json
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Date:
+      - Sun, 15 Sep 2024 01:17:22 GMT
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - WSGIServer/0.2 CPython/3.12.6
+      Vary:
+      - Accept, origin
+      WWW-Authenticate:
+      - Bearer realm="api"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      x-moesif-transaction-id:
+      - 77b9926b-8ec0-486f-b5b3-2e1fa1805838
+    status:
+      code: 401
+      message: Unauthorized
+version: 1

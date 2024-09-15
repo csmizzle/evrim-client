@@ -1,4 +1,6 @@
-# Python Client
+[![codecov](https://codecov.io/gh/csmizzle/evrim-client/graph/badge.svg?token=E2V35OBJCA)](https://codecov.io/gh/csmizzle/evrim-client)
+
+# Evrim Client
 A simple Python client to interact with Evrim's REST API.
 
 ## Authentication

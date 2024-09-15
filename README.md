@@ -1,7 +1,7 @@
 [![codecov](https://codecov.io/gh/csmizzle/evrim-client/graph/badge.svg?token=E2V35OBJCA)](https://codecov.io/gh/csmizzle/evrim-client)
 
 # Evrim Client
-A simple Python client to interact with Evrim's REST API.
+A simple Python client to interact with [Evrim's](https://www.evrim.ai/) REST API.
 
 ## Authentication
 Evrim's REST API uses [JSON Web Tokens](https://jwt.io/introduction) (JWT) for authentication. Users can either obtain one using their username and password or use an existing **valid** JWT.

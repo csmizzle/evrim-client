@@ -185,7 +185,7 @@ class Evrim:
             requests.HTTPError: If the request to the server fails.
         """
         response = self.session.post(
-            f"{self.url}/marketing/research/",
+            f"{self.url}/research/",
             json={
                 "url": url,
                 "title": title,

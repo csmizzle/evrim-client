@@ -16,7 +16,7 @@ env:
   EVRIM_PASSWORD: ${{ secrets.EVRIM_PASSWORD }}
   EVRIM_TOKEN : ${{ secrets.EVRIM_TOKEN }}
   EVRIM_REPORT_ID: 1
-  ERVIM_RUN_ID: 1
+  EVRIM_RUN_ID: 1
 
 
 jobs:
@@ -40,7 +40,7 @@ jobs:
       run: poetry install --all-extras
 
     - name: Run tests
-      run: poetry run pytest --cov
+      run: poetry run pytest
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v4

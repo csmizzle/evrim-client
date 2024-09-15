@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "evrim"
-version = "0.1.0"
+version = "0.1.1"
 description = "Simple client for Evrim"
 authors = ["Chris <chris@evrim.ai>"]
 readme = "README.md"

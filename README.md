@@ -109,3 +109,7 @@ This is will do two things:
 - Validate your access token to ensure it is still valid
 - If valid, set you session `Authorization` header with the existing valid `access` token
 - If `response` is provided, this token will also be set so you can leverage operations like `refresh_token`.
+
+
+# Contact
+Please reach out to chris@evrim.ai with any feedback or ideas!

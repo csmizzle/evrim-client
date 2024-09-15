@@ -1,4 +1,4 @@
-from evrim import Evrim
+from evrim.client import Evrim
 from evrim import models
 import os
 import pytest

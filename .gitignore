@@ -4,3 +4,4 @@ swagger
 .vscode
 /tests/data
 *.pyc
+dist

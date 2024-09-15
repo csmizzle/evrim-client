@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "evrim-client"
+name = "evrim"
 version = "0.1.0"
 description = "Simple client for Evrim"
 authors = ["Chris <chris@evrim.ai>"]
